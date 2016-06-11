@@ -1,1 +1,2 @@
 # stipepool
+# strivepool
