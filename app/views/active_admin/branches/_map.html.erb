@@ -1,0 +1,13 @@
+</style>
+<section id="cd-google-map">
+  <div id="google-container"></div>
+</section>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var latitude  = <%= branch.latitude %>;
+  var longitude = <%= branch.longitude %>;
+
+  var infowindow = new google.maps.InfoWindow({
+      content: "<%= branch.full_address %>"
+    });
+</script>

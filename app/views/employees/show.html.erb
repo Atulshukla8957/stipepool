@@ -1,0 +1,30 @@
+<%- model_class = Employee -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
+  <dd><%= @employee.username %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @employee.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:company_id) %>:</strong></dt>
+  <dd><%= @employee.company.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:branch_id) %>:</strong></dt>
+  <dd><%= @employee.branch.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:job_title_id) %>:</strong></dt>
+  <dd><%= @employee.job_title.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:job_category_id) %>:</strong></dt>
+  <dd><%= @employee.job_category.title%></dd>
+  <dt><strong><%= model_class.human_attribute_name(:work_shift_id) %>:</strong></dt>
+  <dd><%= @employee.work_shift.title%></dd>
+  <%@employee.skills.each do |skill| %>
+    <dt><strong><%= model_class.human_attribute_name(:skills) %>:</strong></dt>
+    <dd><%= skill.title%></dd> 
+  <% end -%>
+  <%@employee.educations.each do |education| %> 
+    <dt><strong><%= model_class.human_attribute_name(:educations) %>:</strong></dt>
+    <dd><%= education.title%></dd>
+  <% end -%> 
+
+</dl>

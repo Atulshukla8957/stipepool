@@ -6,7 +6,7 @@ ActiveAdmin.register WorkShift do
 
 	form  do |f|
 		f.inputs "Work Shift" do
-		f.input :employee_id,as: :select, collection: Employee.select(:id,:username).uniq,:prompt => 'Select Employee' 
+		f.input :employee_ids,as: :select, collection: Employee.select(:id,:username).uniq,:prompt => 'Select Employee' 
 		f.input :title
     f.input :start_time ,as: :select, collection: WorkShift.time_calc ,:prompt => 'Select Time' 
  		f.input :end_time ,as: :select, collection: WorkShift.time_calc ,:prompt => 'Select Time' 

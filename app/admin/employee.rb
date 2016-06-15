@@ -2,8 +2,7 @@ ActiveAdmin.register Employee do
 
 	permit_params :username, :company_id, :branch_id, :job_title_id, :job_category_id, :work_shift_id , skill_ids: [:id], education_ids: [:id]
   
-
-
+  
 	form do |f|
 	  f.inputs "Empolyee"  do
 

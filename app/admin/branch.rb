@@ -1,7 +1,7 @@
 ActiveAdmin.register Branch do
 	menu   parent: "Oraganisation"
 
-	permit_params :title, :description, :company_id,:address_line_1, :city, :state , :country, :zipcode
+	permit_params :title, :description, :company_id,:address_line_1, :city, :state , :latitude,:longitude 
 
 	
 
@@ -18,9 +18,25 @@ ActiveAdmin.register Branch do
 	 		f.input :state
 	 		f.input :country,:as=> :string
 	 		f.input :zipcode
- 
 	  	f.actions
 	 	end
+ 	end
+	 	
+ 	show  do 
+ 		attributes_table do
+      row :company_id
+      row :title
+     	row :description
+     	row :address_line_1
+     	row :city
+     	row	:state
+     	row :country
+     	row :zipcode
+   	end
+ 		@branch = Branch.find(params[:id])
+		
+   	render partial: 'active_admin/branches/map' ,:locals => {:branch => @branch }
+   	
 	end
 
 # See permitted parameters documentation:

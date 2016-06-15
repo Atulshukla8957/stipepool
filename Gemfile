@@ -19,8 +19,13 @@ gem 'pundit'
 gem 'active_admin_datetimepicker'
 gem 'jquery-timepicker-rails'
 gem 'gmaps4rails'
+gem 'geocoder'
 gem 'carrierwave'
 gem "mini_magick"
+gem "therubyracer"
+gem "less-rails" 
+gem "twitter-bootstrap-rails"
+gem 'toastr-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

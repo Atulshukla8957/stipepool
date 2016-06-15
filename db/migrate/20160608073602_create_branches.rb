@@ -4,8 +4,8 @@ class CreateBranches < ActiveRecord::Migration
     	t.references :company
       t.string :title
       t.string :description
-      t.string :lat 
-      t.string :lng
+      t.float :latitude
+      t.float :longitude
       t.timestamps null: false
 
       t.timestamps null: false
