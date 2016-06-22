@@ -4,7 +4,7 @@
 <form class="form-inline" role="form">
   <div class="form-group">
     <%= f.label :email ,class: "sr-only" %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true,class: "glyphicon glyphicon-user" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

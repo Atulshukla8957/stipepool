@@ -53,7 +53,7 @@
           	<ul class="pull-right" >
   						<% if employee_signed_in? %>
     						 <%= current_employee.username %>
-    							<%= link_to "Sign out", destroy_employee_session_path, :method => :delete , class:"btn .btn-large"%>
+    							<%= link_to "Sign out", destroy_employee_session_path, :method => :delete , class:"btn btn btn-primary"%>
   						<% else %>
     						<%= link_to "Sign up", new_employee_registration_path %> or <%= link_to "sign in", new_employee_session_path %>
   						<% end %>

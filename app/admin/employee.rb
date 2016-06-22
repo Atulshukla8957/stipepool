@@ -1,11 +1,14 @@
 ActiveAdmin.register Employee do
 
-	permit_params :username, :company_id, :branch_id, :job_title_id, :job_category_id, :work_shift_id , skill_ids: [:id], education_ids: [:id]
+	permit_params :email,:password, :username, :company_id, :branch_id, :job_title_id, :job_category_id, :work_shift_id , skill_ids: [:id], education_ids: [:id]
   
   
 	form do |f|
+   
 	  f.inputs "Empolyee"  do
-
+      f.input :email
+      f.input :password unless f.object.persisted?
+      f.input :password_confirmation unless f.object.persisted?
 	  	f.input :username
 	    f.input :company_id, as: :select, collection: Company.select(:id,:title).uniq, :prompt=> "Select Company"
 	  	f.input :branch_id, as: :select, collection: Branch.select(:id,:title).uniq, :prompt=> "Select Branch"
@@ -24,9 +27,22 @@ ActiveAdmin.register Employee do
     f.actions	
 	end 
 
+  index do
+    selectable_column
+      column :id
+      column :email
+      column :username 
+      column :company_id 
+      column :branch_id
+      column :job_title 
+       actions
+ 
+  end
+
 
 	show do
     attributes_table_for employee do
+      row :email
       row :username 
       row :company_id 
       row :branch_id
@@ -44,9 +60,10 @@ ActiveAdmin.register Employee do
   end
 	
 	controller do
-		after_action :update_skills , only: [:create , :update]
+
+		after_action :update_skills , only: [:update]  
     def update_skills
-        employee = Employee.where(id: params[:id]).first ||  Employee.where(username: params[:employee][:username]).last
+        employee = Employee.where(id: params[:id]).first ||  Employee.where(username: params[:employee][:username]).last 
         employee.skills.delete_all
         skills = params[:employee][:skill_ids]
         skills.shift
@@ -55,7 +72,7 @@ ActiveAdmin.register Employee do
         end
     end
 
-    after_action :update_educations , only: [:create , :update]
+    after_action :update_educations , only: [:update]
     def update_educations
         employee = Employee.where(id: params[:id]).first ||  Employee.where(username: params[:employee][:username]).last
         employee.educations.delete_all
@@ -64,10 +81,19 @@ ActiveAdmin.register Employee do
         educations.each do | education_id|
           	employee.educations << Education.find(education_id.to_i)
         end
-    end	
-
-
+    end  
   end  
+  controller do
+
+    def update
+      if params[:employee][:password].blank?
+        params[:employee].delete("password")
+        params[:employee].delete("password_confirmation")
+      end
+      super
+    end
+
+  end
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

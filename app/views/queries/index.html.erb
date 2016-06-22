@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">Listing Queries </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>     
+        <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <% @queries.each do |query| %>
+            <tr>
+              <td> <%= query.creater.username %></td>
+              <td><%= query.title %></td>
+              <td><%= query.description %></td>
+              <td><%= link_to 'Show', employee_query_path(query.creater.id,query.id),class:"btn btn-default" %>
+              </td>
+            </tr> 
+          <% end %>
+      </tbody>
+    </table>
+  </div>  
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Submit Queries </div>
+      <%= render partial: 'form', :locale=>{ employee: @employee} %>
+  </div>  
+</div>

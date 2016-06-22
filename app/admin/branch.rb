@@ -1,7 +1,7 @@
 ActiveAdmin.register Branch do
 	menu   parent: "Oraganisation"
 
-	permit_params :title, :description, :company_id,:address_line_1, :city, :state , :latitude,:longitude 
+	permit_params :title, :description, :company_id,:address_line_1, :city, :state ,:country,:zipcode, :latitude,:longitude 
 
 	
 

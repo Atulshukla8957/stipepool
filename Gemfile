@@ -26,6 +26,7 @@ gem "therubyracer"
 gem "less-rails" 
 gem "twitter-bootstrap-rails"
 gem 'toastr-rails'
+gem 'bootstrap', '~> 4.0.0.alpha3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

@@ -5,12 +5,13 @@ class Employee < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
          
-
 	belongs_to :company 
 	belongs_to :branch
 	belongs_to :work_shift
 	belongs_to :job_title
 	belongs_to :job_category
+	has_many :queries , :class_name => 'Query', :foreign_key => 'creater_id'
+	has_many :comments, :class_name => 'Comment', :foreign_key => 'commenter_id'
 	has_and_belongs_to_many :skills
 	has_and_belongs_to_many :educations 
 

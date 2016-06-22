@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-    devise_for :admin_users, ActiveAdmin::Devise.config
-    ActiveAdmin.routes(self)
-    devise_for :employees , controller:{
-                          sessions: 'employees/sessions',
-                          registrations: 'employees/registrations' 
-                         }
-   resources :employees
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  devise_for :employees 
+  resources :employees do
+    resources :queries do 
+      resources :comments
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   # Example of regular route:
-      # get 'employee/:id' => 'employees#show'
+     # get 'admin/dashboard' => 'admin#dashboard' , as: :admin
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
