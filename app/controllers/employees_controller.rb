@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
 	def employee_session
 		byebug
 		@employee = Employee.find(params[:id])
-		EmployeeSession.check_in
+		@employee.create_employee_session.check_in
 
 	end
 
