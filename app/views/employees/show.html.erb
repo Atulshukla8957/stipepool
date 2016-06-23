@@ -1,79 +1,42 @@
 
-<div class="panel panel panel-primary"> 
-    <div class="panel-heading">
-      <h2 class="panel-title">Employee</h2>
-    </div>
-  </div>
-
-  <div class="panel panel-default">
+<div class="panel panel panel-info"> 
   <div class="panel-heading">
-    <h3 class="panel-title">Username</h3>
+    <h2 class="panel-title">Employee</h2>
   </div>
-  <div class="panel-body">
-   <%= @employee.username %>
-  </div>
-
+</div>  
+<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Email</h3>
-  </div>
-  <div class="panel-body">
-   <%= @employee.email %>
+    <h3 class="panel-title">Username: <%= @employee.username %></h3>
+  </div> 
+  <div class="panel-heading">
+    <h3 class="panel-title">Email: <%= @employee.email %></h3>
   </div>
   <div class="panel-heading">
-    <h3 class="panel-title">Company Name</h3>
-  </div>
-  <div class="panel-body">
-   <%= @employee.company.title %>
-  </div>
-
-  <div class="panel-heading">
-    <h3 class="panel-title">Branch Name</h3>
-  </div>
-  <div class="panel-body">
-   <%= @employee.branch.title %>
-  </div>
-
-  <div class="panel-heading">
-    <h3 class="panel-title">Job Title</h3>
-  </div>
-  <div class="panel-body">
-   <%= @employee.job_title.title  %>
+    <h3 class="panel-title">Company Name: <%= @employee.company.title %></h3>
   </div>
   <div class="panel-heading">
-    <h3 class="panel-title">Job Category</h3>
-  </div>
-  <div class="panel-body">
-   <%= @employee.job_category.title  %>
-  </div>
-
-
+    <h3 class="panel-title">Branch Name: <%= @employee.branch.title %></h3>
+  </div>  
   <div class="panel-heading">
-    <h3 class="panel-title">Work Shift</h3>
+    <h3 class="panel-title">Job Title: <%= @employee.job_title.title  %></h3>
   </div>
-  <div class="panel-body">
-   <%= @employee.work_shift.title %>
-  </div>
-
-
-
   <div class="panel-heading">
-    <h3 class="panel-title">Skillls</h3>
+    <h3 class="panel-title">Job Category: <%= @employee.job_category.title  %></h3>
   </div>
-  <div class="panel-body">
-    <%@employee.skills.each do |skill| %>
-      <%= skill.title%>
-     <% end -%>  
-  </div>
-
-
   <div class="panel-heading">
-    <h3 class="panel-title">Education</h3>
+    <h3 class="panel-title">Work Shift: <%= @employee.work_shift.title %></h3>
   </div>
-  <div class="panel-body">
-    <%@employee.educations.each do |education| %>
-      <%= education.title%> 
-    <% end -%>
+  <div class="panel-heading">
+    <h3 class="panel-title">Skillls: <%@employee.skills.each do |skill| %>
+      <%= skill.title%>,
+     <% end -%></h3>
+  </div> 
+  <div class="panel-heading">
+    <h3 class="panel-title">Education:<%@employee.educations.each do |education| %>
+      <%= education.title%>, 
+    <% end -%></h3>
   </div>
+  </div>
+  <div class="button">
+  <%= link_to 'Submit Queries',employee_queries_path(@employee),class: "btn btn-primary"%>
 </div>
-<h3><%= link_to 'Submit Queries',employee_queries_path(@employee),class: "btn btn-default"%></h3>
-<%= link_to 'Submit Queries',employee_queries_path(@employee),class: "btn btn-default"%></h3>

@@ -9,10 +9,14 @@ class EmployeesController < ApplicationController
 	end
 
 	def show
-		@employee = Employee.find(params[:id])
-
-		
+		@employee = Employee.find(params[:id])	
 	end
 
+	def employee_session
+		byebug
+		@employee = Employee.find(params[:id])
+		EmployeeSession.check_in
+
+	end
 
 end

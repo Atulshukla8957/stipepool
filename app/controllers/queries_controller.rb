@@ -9,6 +9,7 @@ class QueriesController < InheritedResources::Base
 	def create 
 		@query = Query.new(query_params)
 		@query.creater = current_employee
+		byebug
 		if @query.save
 			redirect_to employee_queries_path
 		else
@@ -17,7 +18,7 @@ class QueriesController < InheritedResources::Base
 	end	
  
 	def show
- 
+  		
 	end
 
 

@@ -1,32 +1,29 @@
 <p id="notice"><%= notice %></p>
-<div class="panel panel-primary">
-	<div class="panel-heading">Query </div>
+<div class="panel panel-danger">
+	<div class="panel-heading">
+		<h4><strong>Query Description:</strong></h4> 
+	</div>	
 		<div class="panel-body">
-			<p>
-				<strong>Title:</strong>
-				<%= @query.title %>
-			</p>
-			<p>
-				<strong>Description:</strong>
-				<%= @query.description %>
-			</p>
-		</div>	
-	</div>
-<div class="panel panel-default">
-	<div class="panel-heading">Comments </div>
-	<div class="panel-body"
+			<h5><strong>Query Title : </strong><%= @query.title %></h5>
+			<h5><strong>Query Description : </strong><%= @query.description %></h5>
+		</div>
+		<div class="panel-body">		
 		<% @query.comments.each do |comment| %>	
-			<strong><%=comment.commenter.username %>:</strong>
-			<p><%= comment.description %></p>
+			<strong><%=comment.commenter.username %></strong>: <%= comment.description %></p>
 		<% end %>
+	</div>
+</div>		
+<div class="panel panel-primary">
+	<div class="panel-heading">Create Comments</div>
+	<div class="panel-body">
 		<%= form_for ([current_employee,@query, @query.comments.build]) do |f| %>
 			<%= f.label :description %><br>
 			<%= f.text_area :description%>
 			</p>
-			<p>
 			<%= f.submit %>
 			</p>
 		<% end %>
-	</div>	
+	</div>
+<div>
+	<%= button_to 'Queries',employee_queries_path(current_employee),method:'get', class: "btn btn-primary"%>
 </div>
-<%= link_to 'Submit Queries',employee_queries_path(current_employee),class: "btn btn-danger"%></h3>

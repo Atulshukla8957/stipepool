@@ -14,5 +14,6 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require toastr
+//= require tether
 //= require bootstrap-sprockets
 //= require_tree .

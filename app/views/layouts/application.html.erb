@@ -48,19 +48,21 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">Strivepool</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <div id="user_nav">
+      <div class="navbar-collapse collapse navbar-responsive-collapse   ">
+         <div id="user_nav">
           	<ul class="pull-right" >
   						<% if employee_signed_in? %>
     						 <%= current_employee.username %>
-    							<%= link_to "Sign out", destroy_employee_session_path, :method => :delete , class:"btn btn btn-primary"%>
+    							<%= link_to "Sign out", destroy_employee_session_path, :method => :delete , class:"btn btn btn-default"%>
   						<% else %>
     						<%= link_to "Sign up", new_employee_registration_path %> or <%= link_to "sign in", new_employee_session_path %>
   						<% end %>
-  					</ul>
+              <%= form_tag(@employee, action: 'checkin_time', method:'post') do %>
+              <div> 
+                <%= submit_tag 'Save' %>  
+              </div> 
+              <% end %>
           </div>
-
-
         </div>
       </div>
     </div>
